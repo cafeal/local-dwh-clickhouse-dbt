@@ -13,6 +13,7 @@ wheels/
 dbt.log
 .user.yml
 *.csv
+*.tsv.gz
 
 # clickhouse
 clickhouse/log

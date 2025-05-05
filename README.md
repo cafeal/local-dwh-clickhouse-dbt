@@ -37,7 +37,7 @@ cd local-dwh-clickhouse-dbt
 
 # Start the containers
 cd clickhouse
-docker-compose up -d
+docker compose up -d
 
 # Seed data
 cd ../scripts/seed_data

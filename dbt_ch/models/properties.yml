@@ -1,5 +1,34 @@
 version: 2
 
+models:
+  - name: genre_stats
+    description: "stats by genre"
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "is_adult_ratio between 0 and 1"
+      - dbt_utils.expression_is_true:
+          expression: "avg_rating between 0 and 10"
+    columns:
+      - name: genre
+        description: "genre of the title"
+        tests:
+          - not_null
+          - unique
+      - name: count
+        description: "number of titles in this genre"
+      - name: is_adult_ratio
+        tests:
+          - not_null
+        description: "ratio of adult titles"
+      - name: avg_rating
+        description: "average rating of titles in this genre"
+        tests:
+          - not_null
+      - name: total_votes
+        description: "total number of votes for titles in this genre"
+        tests:
+          - not_null
+
 sources:
   - name: imdb
     schema: imdb

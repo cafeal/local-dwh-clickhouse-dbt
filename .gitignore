@@ -17,3 +17,5 @@ dbt.log
 
 # clickhouse
 clickhouse/log
+
+.vscode

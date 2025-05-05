@@ -4,16 +4,12 @@ A lightweight, local data warehouse implementation for development and testing p
 
 ## Overview
 
-This project provides a lightweight, containerized data warehouse environment using ClickHouse as the database engine and dbt for data transformations. It's designed for developers and data engineers who need a local development environment that mimics production data warehousing capabilities without the overhead of cloud infrastructure.
-
-The local-dwh creates a fully functional data pipeline environment where you can:
-- Test ETL processes
-- Develop and validate dbt models
-- Benchmark query performance
-- Prototype data workflows
-- Practice data warehouse concepts
+This project provides a lightweight, containerized data warehouse environment using ClickHouse as the database engine and dbt for data transformations.
+It's designed for developers and data engineers who need a local development environment that mimics production data warehousing capabilities without the overhead of cloud infrastructure.
 
 All components run in Docker containers for easy setup and teardown, making it ideal for development, testing, and educational purposes.
+
+This project also includes population scripts by IMDb and example dbt project.
 
 ## Prerequisites
 
@@ -28,27 +24,30 @@ All components run in Docker containers for easy setup and teardown, making it i
 - **Seed Data Scripts**: Utilities to populate the warehouse with sample data (IMDb) for testing
 - **Python Environment**: Managed with uv for dependency management
 
-## Installation
+## Try
 
 ```bash
 # Clone the repository
-git clone https://github.com/cafeal/local-dwh-clickhouse-dbt.git
-cd local-dwh-clickhouse-dbt
+$ git clone https://github.com/cafeal/local-dwh-clickhouse-dbt.git
+$ cd local-dwh-clickhouse-dbt
 
 # Start the containers
-cd clickhouse
-docker compose up -d
+$ cd clickhouse
+$ docker compose up -d
 
 # Seed data
-cd ../scripts/seed_data
-make
+$ cd ../scripts/seed_data
+$ make
 
 # Install deps and activate
-cd ..
-uv sync --frozen
-source ./.venv/bin/activate
+$ cd ../..
+$ uv sync --frozen
+$ source ./.venv/bin/activate
+
+# Init dbt
+$ cd dbt_ch
+$ dbt deps
 
 # Run dbt
-cd dbt_ch
-dbt build
+$ dbt build
 ```

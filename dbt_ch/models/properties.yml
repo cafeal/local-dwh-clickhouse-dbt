@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: imdb
+    schema: imdb
+    tables:
+      - name: name_basics
+      - name: title_basics
+      - name: title_episode
+      - name: title_ratings
